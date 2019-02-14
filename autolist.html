@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>打つと改行が&lt;br&gt;になるやつ</title>
+    <title>改行区切りのリストを吐き出すやつ</title>
     <script
 			  src="https://code.jquery.com/jquery-3.3.1.min.js"
 			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -44,10 +44,10 @@
 </head>
 <body>
     <div class="contents">
-        <h1>打つと改行が&lt;br&gt;になるやつ v1</h1>
+        <h1>改行区切りのリストを吐き出すやつ v1</h1>
         <span style="white-space:nowrap;">by&nbsp;<a href="https://twitter.com/taichan_v2" target="_blank" rel="noopener">@taichan_v2</a></span>
         <textarea id="inputArea" placeholder="ここに文章を入れてね..."></textarea>
-        <p id="showArea">文章を打つとここに&lt;br&gt;をつけて表示します。</p>
+        <p id="showArea">文章を打つと改行区切りのリスト形式のhtmlソースを表示します。</p>
         <button id="copyToClipboard">結果をクリップボードにコピー</button>
     </div>
 </body>
@@ -56,7 +56,7 @@
         $("#inputArea").val("");
     })
     $("#inputArea").on("keyup",function(){
-        $("#showArea").html(escapeHtml($("#inputArea").val()).replace(/\n/g,'&lt;br&gt;<br>'));
+        $("#showArea").html(escapeHtml(makeList()).replace(/ {4}/g, "&nbsp;&nbsp;&nbsp;&nbsp;").replace(/\n/g, "<br>"));
         let len = $("#inputArea").val().split(/\n/g).length;
         if(len > 4){
             $("#inputArea").css("height", (parseInt(len)+1).toString()+"em");
@@ -66,16 +66,23 @@
     });
     $("#copyToClipboard").on("click",function(){
         let pasteBoard = $("<textArea id=\"pasteTemp\"></textArea>");
-        let text = $("#inputArea").val().replace(/\n/g,'<br>\n');
+        let text = makeList();
         pasteBoard.val(text);
-        try{
         $("body").append(pasteBoard);
         pasteBoard.select();
         document.execCommand('copy');
-        }
-        catch(e){}
         pasteBoard.remove();
     });
+    
+    function makeList(){
+        let lines = escapeHtml($("#inputArea").val()).split(/\n/);
+        let str = "<ul>\n";
+        for(i in lines){
+            str +="    <li>"+lines[i].toString()+"</li>\n"
+        }
+        str+="</ul>"
+        return str
+    }
 	
     function escapeHtml(str){
         str = str.replace(/&/g, '&amp;');
