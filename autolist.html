@@ -46,6 +46,7 @@
     <div class="contents">
         <h1>改行区切りのリストを吐き出すやつ v1</h1>
         <span style="white-space:nowrap;">by&nbsp;<a href="https://twitter.com/taichan_v2" target="_blank" rel="noopener">@taichan_v2</a></span>
+        <span style="white-space:nowrap;" id="olModeSpan"><input type="checkbox" id="olMode">olにする</span>
         <textarea id="inputArea" placeholder="ここに文章を入れてね..."></textarea>
         <p id="showArea">文章を打つと改行区切りのリスト形式のhtmlソースを表示します。</p>
         <button id="copyToClipboard">結果をクリップボードにコピー</button>
@@ -56,7 +57,7 @@
         $("#inputArea").val("");
     })
     $("#inputArea").on("keyup",function(){
-        $("#showArea").html(escapeHtml(makeList()).replace(/ {4}/g, "&nbsp;&nbsp;&nbsp;&nbsp;").replace(/\n/g, "<br>"));
+        changeText();
         let len = $("#inputArea").val().split(/\n/g).length;
         if(len > 4){
             $("#inputArea").css("height", (parseInt(len)+1).toString()+"em");
@@ -64,23 +65,33 @@
             $("#inputArea").css("height", "5em");
         }
     });
+    $("#olModeSpan").on("click", function(){
+        changeText();
+    });
     $("#copyToClipboard").on("click",function(){
         let pasteBoard = $("<textArea id=\"pasteTemp\"></textArea>");
-        let text = makeList();
+        let text = makeList("ul");
+        if($("#olMode:checked").val()) text = makeList(ol);
         pasteBoard.val(text);
         $("body").append(pasteBoard);
         pasteBoard.select();
         document.execCommand('copy');
         pasteBoard.remove();
     });
+
+    function changeText(){
+        let tagName = "ul"
+        if($("#olMode:checked").val()) tagName = "ol";
+        $("#showArea").html(escapeHtml(makeList(tagName)).replace(/ {4}/g, "&nbsp;&nbsp;&nbsp;&nbsp;").replace(/\n/g, "<br>"));
+    }
     
-    function makeList(){
+    function makeList(tagName){
         let lines = escapeHtml($("#inputArea").val()).split(/\n/);
-        let str = "<ul>\n";
+        let str = "<"+tagName+">\n";
         for(i in lines){
             str +="    <li>"+lines[i].toString()+"</li>\n"
         }
-        str+="</ul>"
+        str+="</"+tagName+">"
         return str
     }
 	
