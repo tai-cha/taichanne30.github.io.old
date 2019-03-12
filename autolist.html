@@ -44,7 +44,7 @@
 </head>
 <body>
     <div class="contents">
-        <h1>改行区切りのリストを吐き出すやつ v1</h1>
+        <h1>改行区切りのリストを吐き出すやつ v1.0.1</h1>
         <span style="white-space:nowrap;">by&nbsp;<a href="https://twitter.com/taichan_v2" target="_blank" rel="noopener">@taichan_v2</a></span>
         <span style="white-space:nowrap;" id="olModeSpan"><input type="checkbox" id="olMode">olにする</span>
         <textarea id="inputArea" placeholder="ここに文章を入れてね..."></textarea>
@@ -86,6 +86,7 @@
     }
     
     function makeList(tagName){
+        if(escapeHtml(("#inputArea").val().replace(/\n/g,'')) == "") return ""
         let lines = escapeHtml($("#inputArea").val()).split(/\n/);
         let str = "<"+tagName+">\n";
         for(i in lines){
