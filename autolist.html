@@ -86,7 +86,7 @@
     }
     
     function makeList(tagName){
-        if(escapeHtml(("#inputArea").val().replace(/\n/g,'')) == "") return ""
+        if(escapeHtml($("#inputArea").val().replace(/\n/g,'')) == "") return ""
         let lines = escapeHtml($("#inputArea").val()).split(/\n/);
         let str = "<"+tagName+">\n";
         for(i in lines){
