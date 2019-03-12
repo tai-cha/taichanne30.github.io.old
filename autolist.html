@@ -89,7 +89,7 @@
         let lines = escapeHtml($("#inputArea").val()).split(/\n/);
         let str = "<"+tagName+">\n";
         for(i in lines){
-            str +="    <li>"+lines[i].toString()+"</li>\n"
+            if(lines[i].toString() != "") str +="    <li>"+lines[i].toString()+"</li>\n"
         }
         str+="</"+tagName+">"
         return str
