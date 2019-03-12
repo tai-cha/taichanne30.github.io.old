@@ -48,6 +48,7 @@
         <span style="white-space:nowrap;">by&nbsp;<a href="https://twitter.com/taichan_v2" target="_blank" rel="noopener">@taichan_v2</a></span>
         <span style="white-space:nowrap;" id="olModeSpan"><input type="checkbox" id="olMode">olにする</span>
         <textarea id="inputArea" placeholder="ここに文章を入れてね..."></textarea>
+        <button id="clear">クリア</button>
         <p id="showArea">文章を打つと改行区切りのリスト形式のhtmlソースを表示します。</p>
         <button id="copyToClipboard">結果をクリップボードにコピー</button>
     </div>
@@ -77,6 +78,11 @@
         pasteBoard.select();
         document.execCommand('copy');
         pasteBoard.remove();
+    });
+
+    $("#clear").on("click", function(){
+        $("inputArea").val("");
+        changeText();
     });
 
     function changeText(){
