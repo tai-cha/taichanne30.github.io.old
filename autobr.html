@@ -44,9 +44,10 @@
 </head>
 <body>
     <div class="contents">
-        <h1>打つと改行が&lt;br&gt;になるやつ v1.0.1</h1>
+        <h1>打つと改行が&lt;br&gt;になるやつ v1.0.2</h1>
         <span style="white-space:nowrap;">by&nbsp;<a href="https://twitter.com/taichan_v2" target="_blank" rel="noopener">@taichan_v2</a></span>
         <textarea id="inputArea" placeholder="ここに文章を入れてね..."></textarea>
+        <button id="copyFromClipboard">クリップボードから貼り付け</button>
         <button id="clear">クリア</button>
         <p id="showArea">文章を打つとここに&lt;br&gt;をつけて表示します。</p>
         <button id="copyToClipboard">結果をクリップボードにコピー</button>
@@ -80,6 +81,11 @@
         }
         catch(e){}
         pasteBoard.remove();
+    });
+
+    $("copyFromClipboard").on("click", function(){
+        $("#inputArea").select();
+        document.execCommand('paste');
     });
 
     $("#clear").on("click", function(){

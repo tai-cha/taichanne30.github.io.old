@@ -44,10 +44,11 @@
 </head>
 <body>
     <div class="contents">
-        <h1>改行区切りのリストを吐き出すやつ v1.0.1</h1>
+        <h1>改行区切りのリストを吐き出すやつ v1.0.2</h1>
         <span style="white-space:nowrap;">by&nbsp;<a href="https://twitter.com/taichan_v2" target="_blank" rel="noopener">@taichan_v2</a></span>
         <span style="white-space:nowrap;" id="olModeSpan"><input type="checkbox" id="olMode">olにする</span>
         <textarea id="inputArea" placeholder="ここに文章を入れてね..."></textarea>
+        <button id="copyFromClipboard">クリップボードから貼り付け</button>
         <button id="clear">クリア</button>
         <p id="showArea">文章を打つと改行区切りのリスト形式のhtmlソースを表示します。</p>
         <button id="copyToClipboard">結果をクリップボードにコピー</button>
@@ -83,6 +84,11 @@
     $("#clear").on("click", function(){
         $("#inputArea").val("");
         changeText();
+    });
+
+    $("copyFromClipboard").on("click", function(){
+        $("#inputArea").select();
+        document.execCommand('paste');
     });
 
     function changeText(){
