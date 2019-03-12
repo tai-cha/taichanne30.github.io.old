@@ -56,6 +56,10 @@
         $("#inputArea").val("");
     })
     $("#inputArea").on("keyup",function(){
+        if(escapeHtml($("#inputArea").val()) == ""){
+            $("#showArea").html("文章を打つとここに&lt;br&gt;をつけて表示します。");
+            return
+        }
         $("#showArea").html(escapeHtml($("#inputArea").val()).replace(/\n/g,'&lt;br&gt;<br>'));
         let len = $("#inputArea").val().split(/\n/g).length;
         if(len > 4){
