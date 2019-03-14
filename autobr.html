@@ -83,7 +83,7 @@
         pasteBoard.remove();
     });
 
-    $("copyFromClipboard").on("click", function(){
+    $("#copyFromClipboard").on("click", function(){
         $("#inputArea").select();
         document.execCommand('paste');
     });
