@@ -61,3 +61,9 @@ body {
 @keyframes example {
     to { background-position-x: 200%; }
 }
+
+@media screen and (max-width:980%){
+    .contents {
+        width: 100%;
+    }
+}
