@@ -19,7 +19,7 @@ body {
 
 .contents{
     margin: 0;
-    width: calc(80%-3em);
+    width: calc(80% - 3em);
     padding: 3em;
     background-color:#000000aa;
     color:white;
