@@ -1,0 +1,63 @@
+html,body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: rgb(170,197,222); /* Old browsers */
+    background: -moz-linear-gradient(45deg, rgba(170,197,222,1) 0%, rgba(97,153,199,1) 33%, rgba(97,153,199,1) 38%, rgba(58,139,194,1) 57%, rgba(58,132,195,1) 62%, rgba(58,132,195,1) 67%, rgba(38,85,139,1) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(45deg, rgba(170,197,222,1) 0%,rgba(97,153,199,1) 33%,rgba(97,153,199,1) 38%,rgba(58,139,194,1) 57%,rgba(58,132,195,1) 62%,rgba(58,132,195,1) 67%,rgba(38,85,139,1) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(45deg, rgba(170,197,222,1) 0%,rgba(97,153,199,1) 33%,rgba(97,153,199,1) 38%,rgba(58,139,194,1) 57%,rgba(58,132,195,1) 62%,rgba(58,132,195,1) 67%,rgba(38,85,139,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aac5de', endColorstr='#26558b',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.contents{
+    margin: 0;
+    width: calc(80%-3em);
+    padding: 3em;
+    background-color:#000000aa;
+    color:white;
+    min-height: 100%;
+}
+.contents div{
+    margin: 5em 0;
+}
+
+.contents a{
+    display: inline-block;
+    text-decoration: none;
+    color:white;
+    font-weight: bold;
+    background: #1DA1F2;
+    margin: 0.5em;
+    padding: 0.5em;
+    border-radius: 0.2em;
+    box-shadow:0px 0px 6px 4px #0000005a;
+}
+.contents a:hover{
+    box-shadow: #000000;
+    box-shadow:0px 0px 6px 8px #0000008a;
+}
+
+.rainbow{
+    
+    background: linear-gradient(to right, #f00 0%, #f80 14.28%, #dd0 28.56%, #0d0 42.85%, #0dd 57.14%, #00f 71.42%, #e0e 85.71%, #f00 100%) 0% center / 200% auto;
+    
+            background-clip: text;
+    -webkit-background-clip: text;
+    
+            text-fill-color: transparent;
+    -webkit-text-fill-color: transparent;
+    
+    animation: example 4s linear infinite;
+}
+
+@keyframes example {
+    to { background-position-x: 200%; }
+}
