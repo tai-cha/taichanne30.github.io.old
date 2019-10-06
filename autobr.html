@@ -1,58 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>打つと改行が&lt;br&gt;になるやつ</title>
-    <script
-			  src="https://code.jquery.com/jquery-3.3.1.min.js"
-			  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-			  crossorigin="anonymous"></script>
-    <style>
-        html, body{
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .contents {
-            width: 80%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        #inputArea{
-            width: 100%;
-            max-width: 100%;
-            min-width: 100%;
-            min-height: 5em;
-            padding: 1em;
-        }
-
-        #showArea{
-            width: 100%;
-            border: 1px solid black;
-            padding: 1em;
-            border-radius: 1em;
-            min-height: 5em;
-        }
-    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="http://mtsgi.github.io/kitstrap/d/kitstrap.css">
+    <link rel="stylesheet" href="http://mtsgi.github.io/kitstrap/d/kitstrap-cursor.css">
+    <link rel="stylesheet" href="http://mtsgi.github.io/kitstrap/d/kitstrap-font.css">
 </head>
 <body>
-    <div class="contents">
-        <h1>打つと改行が&lt;br&gt;になるやつ v1.0.2</h1>
-        <span style="white-space:nowrap;">by&nbsp;<a href="https://twitter.com/taichan_v2" target="_blank" rel="noopener">@taichan_v2</a></span>
-        <textarea id="inputArea" placeholder="ここに文章を入れてね..."></textarea>
-        <button id="copyFromClipboard">クリップボードから貼り付け(Not Working)</button>
-        <button id="clear">クリア</button>
-        <p id="showArea">文章を打つとここに&lt;br&gt;をつけて表示します。</p>
-        <button id="copyToClipboard">結果をクリップボードにコピー</button>
+    <div class="kit-flex kit-flex-column m-xl">
+        <h1>打つと改行が&lt;br&gt;になるやつ v1.1.0</h1>
+        <span style="white-space:nowrap;" class="m">by&nbsp;<a href="https://twitter.com/taichan_v2" rel="noopener" target="_blank" class="kit-hyperlink">@taichan_v2</a></span>
+        <textarea id="inputArea" placeholder="ここに文章を入れてね..." style="height: 5em;" class="textbox m p"></textarea>
+        <kit-button id="copyFromClipboard" class="m">クリップボードから貼り付け(Not Working)</kit-button>
+        <kit-button id="clear" class="m">クリア</kit-button>
+        <p id="showArea" class="kit-container m p-l">文章を打つとここに&lt;br&gt;をつけて表示します。</p>
+        <kit-button id="copyToClipboard" class="m">結果をクリップボードにコピー</kit-button>
     </div>
-</body>
+
 <script>
     $("html").ready(function(){
         $("#inputArea").val("");
@@ -103,4 +71,4 @@
     return str;
     }
 </script>
-</html>
+</body></html>
